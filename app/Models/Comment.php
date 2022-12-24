@@ -17,6 +17,6 @@ class Comment extends Model
     }
 
     public function news(){
-        return $this->belongsTo(Comment::class);
+        return $this->belongsTo(News::class);
     }
 }

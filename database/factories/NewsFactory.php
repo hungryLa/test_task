@@ -18,6 +18,7 @@ class NewsFactory extends Factory
             'title'=> $this->faker->sentence(2),
             'description' => $this->faker->text(),
             'small_description' => $this->faker->sentence(6),
+            'image' => 'news.jpg',
             'user_id' => User::get()->random()->id,
         ];
     }

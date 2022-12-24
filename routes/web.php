@@ -13,4 +13,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 use App\Http\Controllers\CommonController;
-Route::get('/', [CommonController::class,'index']);
+Route::get('/', [CommonController::class,'index'])->name('news.index');
+
+Route::get('/news/{id}',[CommonController::class,'show'])->name('news.show');
