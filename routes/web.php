@@ -13,10 +13,8 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Auth::routes();
+Auth::routes(['verify' => true]);
 Route::get('/logout', [\App\Http\Controllers\Auth\LoginController::class, 'logout'])->name('logout');
-
-use App\Http\Controllers\CommonController;
 
 use App\Http\Controllers\NewsController;
 
@@ -27,7 +25,7 @@ Route::group(['prefix' => 'news'], function () {
 });
 
 use App\Http\Controllers\CabinetController;
-Route::group(['middleware' => 'auth', 'prefix' => 'cabinet'], function () {
+Route::group(['middleware' => ['auth','verified'], 'prefix' => 'cabinet'], function () {
     Route::get('/news',[CabinetController::class,'news'])->name('cabinet.news');
     Route::get('/news/create',[CabinetController::class,'create'])->name('cabinet.news.create');
     Route::post('/news',[CabinetController::class,'store'])->name('cabinet.news.store');
