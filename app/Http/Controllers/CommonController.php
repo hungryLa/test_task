@@ -9,5 +9,7 @@ use Illuminate\Support\Facades\DB;
 
 class CommonController extends Controller
 {
-
+    public function index(){
+        return view('index');
+    }
 }
