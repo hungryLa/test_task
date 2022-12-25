@@ -26,7 +26,7 @@
                         @enderror
                     </div>
                     <div class="form-group mb-2">
-                        <a href="">Забыли пароль?</a>
+                        <a href="{{route('password.request')}}">Забыли пароль?</a>
                     </div>
                     <button type="submit" class="btn btn-primary">Войти</button>
                 </form>
