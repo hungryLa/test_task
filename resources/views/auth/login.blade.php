@@ -12,8 +12,8 @@
                         <input type="email" class="form-control @error('email') is-invalid @enderror" id="email" name="email" placeholder="Введите email">
                         @error('email')
                         <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
+                            <strong>{{ $message }}</strong>
+                        </span>
                         @enderror
                     </div>
                     <div class="form-group mb-2">
@@ -21,8 +21,8 @@
                         <input type="password" class="form-control @error('password') is-invalid @enderror" id="password" name="password" placeholder="Введите пароль">
                         @error('password')
                         <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
+                            <strong>{{ $message }}</strong>
+                        </span>
                         @enderror
                     </div>
                     <div class="form-group mb-2">

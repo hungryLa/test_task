@@ -14,7 +14,7 @@
 <header>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
-            <a class="navbar-brand" href="{{route('index')}}">Блог</a>
+            <a class="navbar-brand" href="{{route('index')}}">Личный кабинет</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                     aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -26,20 +26,12 @@
                     </li>
                     @auth()
                         <li class="nav-item">
-                            <a class="nav-link" href="{{route('cabinet.news')}}">Личный кабинет</a>
+                            <a class="nav-link" href="{{route('cabinet.news.create')}}">Добавить новость</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{route('logout')}}">Выйти</a>
                         </li>
                     @endauth
-                    @guest()
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{route('login')}}">Авторизация</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{route('register')}}">Регистрация</a>
-                        </li>
-                    @endguest
                 </ul>
             </div>
         </div>

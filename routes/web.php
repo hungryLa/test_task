@@ -14,19 +14,26 @@ use Illuminate\Support\Facades\Route;
 |
 */
 Auth::routes();
-Route::get('/logout', [\App\Http\Controllers\Auth\LoginController::class,'logout'])->name('logout');
+Route::get('/logout', [\App\Http\Controllers\Auth\LoginController::class, 'logout'])->name('logout');
 
 use App\Http\Controllers\CommonController;
 
 use App\Http\Controllers\NewsController;
-Route::get('', [NewsController::class,'index'])->name('index');
-Route::group(['prefix'=>'news'],function(){
-    Route::get('', [NewsController::class,'index'])->name('news.index');
-    Route::get('/{id}',[NewsController::class,'show'])->name('news.show');
+
+Route::get('', [NewsController::class, 'index'])->name('index');
+Route::group(['prefix' => 'news'], function () {
+    Route::get('', [NewsController::class, 'index'])->name('news.index');
+    Route::get('/{id}', [NewsController::class, 'show'])->name('news.show');
 });
 
-Route::group(['middleware'=>'auth'],function(){
-    
+use App\Http\Controllers\CabinetController;
+Route::group(['middleware' => 'auth', 'prefix' => 'cabinet'], function () {
+    Route::get('/news',[CabinetController::class,'news'])->name('cabinet.news');
+    Route::get('/news/create',[CabinetController::class,'create'])->name('cabinet.news.create');
+    Route::post('/news',[CabinetController::class,'store'])->name('cabinet.news.store');
+    Route::get('/news/{news}/edit',[CabinetController::class,'edit'])->name('cabinet.news.edit');
+    Route::put('/news/{news}',[CabinetController::class,'update'])->name('cabinet.news.update');
+    Route::delete('/news/{news}',[CabinetController::class,'destroy'])->name('cabinet.news.destroy');
 });
 
 
