@@ -25,5 +25,9 @@ Route::group(['prefix'=>'news'],function(){
     Route::get('/{id}',[NewsController::class,'show'])->name('news.show');
 });
 
+Route::group(['middleware'=>'auth'],function(){
+    
+});
+
 
 
