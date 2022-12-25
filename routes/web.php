@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -12,7 +13,17 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-use App\Http\Controllers\CommonController;
-Route::get('/', [CommonController::class,'index'])->name('news.index');
+Auth::routes();
+Route::get('/logout', [\App\Http\Controllers\Auth\LoginController::class,'logout'])->name('logout');
 
-Route::get('/news/{id}',[CommonController::class,'show'])->name('news.show');
+use App\Http\Controllers\CommonController;
+
+use App\Http\Controllers\NewsController;
+Route::get('', [NewsController::class,'index'])->name('index');
+Route::group(['prefix'=>'news'],function(){
+    Route::get('', [NewsController::class,'index'])->name('news.index');
+    Route::get('/{id}',[NewsController::class,'show'])->name('news.show');
+});
+
+
+
