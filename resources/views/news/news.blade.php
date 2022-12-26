@@ -34,13 +34,14 @@
             @if($comment->user_id == Auth::id())
                 <div class="row">
                     <p><a href="">{{$comment->user->name}}</a>
-                        <mark style="float:right;">Лайков: {{$comment->likes}}</mark>
+                        <mark style="float:right;">Лайков: {{$comment->count_likes}}</mark>
                     </p>
                     <div class="col-11">
                         <form class="" action="{{route('cabinet.news.editComment', $comment)}}" method="POST">
                             @csrf
                             @method('PUT')
-                            <input class="form-control mb-2" value="{{$comment->content}}" id="text_comment" name="text_comment">
+                            <input class="form-control mb-2" value="{{$comment->content}}" id="text_comment"
+                                   name="text_comment">
                             <button type="submit" class="btn btn-warning">Изменить</button>
                         </form>
                     </div>
@@ -55,7 +56,18 @@
             @else
                 <div class="row">
                     <p><a href="">{{$comment->user->name}}</a>
-                        <mark style="float:right;">Лайков: {{$comment->likes}}</mark>
+                        <mark style="float:right;">
+                            @if($comment->likes->firstWhere('user_id', Auth::id()))
+                                <a href="{{route('comment.unlike',$comment)}}" class="m-1">
+                                    <img src="{{asset('icons/star_active.png')}}" width="30px" height="30px" alt="">
+                                </a>
+                            @else
+                                <a href="{{route('comment.like',$comment)}}" class="m-1">
+                                    <img src="{{asset('icons/star.png')}}" width="30px" height="30px" alt="">
+                                </a>
+                            @endif
+                            <b>Лайков: {{$comment->count_likes}}</b>
+                        </mark>
                     </p>
                     <p>{{$comment->content}}</p>
                 </div>

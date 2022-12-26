@@ -50,4 +50,8 @@ class User extends Authenticatable implements MustVerifyEmail
     public function news(){
         return $this->hasMany(News::class);
     }
+
+    public function likes(){
+        return $this->hasMany(Like::class);
+    }
 }

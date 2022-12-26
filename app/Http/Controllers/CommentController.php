@@ -16,7 +16,7 @@ class CommentController extends Controller
 
             Comment::create([
                 'content' => $request->newComment,
-                'likes' => 0,
+                'count_likes' => 0,
                 'user_id' => $user_id,
                 'news_id' => $news->id,
             ]);

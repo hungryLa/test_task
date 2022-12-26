@@ -17,7 +17,7 @@ class CommentFactory extends Factory
     {
         return [
             'content' => $this->faker->text,
-            'likes' => random_int(1, 300),
+            'count_likes' => random_int(1, 300),
             'user_id' => User::get()->random()->id,
             'news_id' => News::get()->random()->id,
         ];

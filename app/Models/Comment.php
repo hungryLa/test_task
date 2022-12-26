@@ -19,4 +19,8 @@ class Comment extends Model
     public function news(){
         return $this->belongsTo(News::class);
     }
+
+    public function likes(){
+        return $this->hasMany(Like::class ,'liked_id');
+    }
 }

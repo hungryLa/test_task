@@ -29,7 +29,7 @@ Route::group(['prefix' => 'news'], function () {
 
 use App\Http\Controllers\CabinetController;
 use App\Http\Controllers\CommentController;
-
+use App\Http\Controllers\LikeController;
 Route::group(['middleware' => ['auth', 'verified'], 'prefix' => 'cabinet'], function () {
     Route::get('/news', [CabinetController::class, 'news'])->name('cabinet.news');
     Route::get('/news/create', [CabinetController::class, 'create'])->name('cabinet.news.create');
@@ -41,6 +41,9 @@ Route::group(['middleware' => ['auth', 'verified'], 'prefix' => 'cabinet'], func
     Route::post('/news/{news}/comment', [CommentController::class, 'store'])->name('cabinet.news.addComment');
     Route::put('/comments/{comment}/edit', [CommentController::class, 'edit'])->name('cabinet.news.editComment');
     Route::delete('/news/{news}/{comment}/destroy',[CommentController::class,'destroy'])->name('cabinet.news.destroyComment');
+
+    Route::get('/comments/{comment}/like',[LikeController::class,'like'])->name('comment.like');
+    Route::get('/comments/{comment}/unlike',[LikeController::class,'unlike'])->name('comment.unlike');
 });
 
 
